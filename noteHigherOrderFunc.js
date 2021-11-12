@@ -25,3 +25,5 @@ console.log(result) // Output: [2, 4, 6]
 // 1. array: [1, 2, 3]
 // 2. instructions: F (function definition of multiplyBy2)
 // 3. output = []
+
+//https://www.youtube.com/watch?v=viQz4nUUnpw&t=2027s
