@@ -1,0 +1,145 @@
+<!-- DOM Manipulation -->
+
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Testing</title>
+        <link rel='stylesheet' href='responsive.css'>
+    </head>
+    <body>
+        <div class='container'>
+            <header>
+                <div class='site-title'>
+                    <h1 id='header-title'>DOM Manipulation</h1>
+                    <p>Document Object Manipulation</p>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href='#'>Home</a></li>
+                        <li><a href='#'>About</a></li>
+                        <li><a href='#'>Learn More</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <img src='' alt=''>
+
+            <div class='columns'>
+                <div class='col col-1'>
+                    <h2>First We</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor, eros vel tincidunt 
+                        varius, ipsum leo posuere arcu, vitae suscipit lorem urna et ante. Phasellus leo nibh, egestas et 
+                        porttitor dignissim, hendrerit sit amet nisl. Pellentesque tristique convallis leo, ut iaculis justo. 
+                        Nunc et elit a elit gravida maximus.
+                        <ul>
+                            <li class='list-group-item'>Dogs</li>
+                            <li class='list-group-item'>Horses</li>
+                            <li class='list-group-item'>Cats</li>
+                        </ul>
+                        <form class='form-inline'>
+                            <input type='text' class='form' value='write here'>
+                            <input type='submit' class='btn' value="Submit">
+                        </form>
+                </div>
+                <div class='col col-2'>
+                    <h2>Second Here</h2>
+                    <p>Morbi arcu sem, lobortis eu aliquam nec, luctus eu sem. Sed ipsum mauris, 
+                        pulvinar vel vehicula et, luctus vel arcu. Praesent euismod interdum arcu eget elementum. 
+                        Morbi leo tellus, cursus quis fermentum placerat, volutpat eget eros. Maecenas ac quam non purus 
+                        consectetur viverra. Morbi accumsan, libero ac ultricies dignissim, elit enim finibus purus, eu pellentesque magna mauris vitae magna. 
+                        Mauris volutpat felis at justo scelerisque eleifend. Suspendisse eu aliquet lectus.</p>
+                    <p>Duis et justo at arcu eleifend rhoncus. Duis ut mi dignissim, tristique tortor quis, venenatis leo. 
+                        Nullam malesuada porttitor metus id vehicula. Nulla iaculis ante id leo dignissim dictum. Cras quis hendrerit 
+                        elit. Cras mauris ante, cursus sed diam a, viverra tempus magna. Maecenas et blandit tellus. Integer rhoncus eleifend turpis id pharetra. </p>
+                </div>
+                <div class='col col-bg col-1'>
+                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla eget nibh vitae mauris 
+                        dignissim aliquam ut vitae risus. Integer tristique dui in lobortis malesuada. Maecenas vulputate metus vel ex facilisis, 
+                        et egestas libero lacinia. Morbi vitae lorem erat. Nam at orci pellentesque, fringilla tortor elementum, fringilla tortor. </p>
+                </div>
+            </div>
+
+            <div class='columns'>
+                <div class='col col-3'>
+                    <h2>Well...</h2>
+                    <p>Morbi placerat purus diam, in pretium libero pulvinar ac. Vivamus rhoncus justo in volutpat cursus. Aenean varius molestie erat eget 
+                        fermentum. Nullam eleifend dui sit amet sem porta hendrerit ut ut lectus. Integer et libero dapibus, venenatis nibh non, fringilla nisl. 
+                        Vestibulum tempus ornare quam, eleifend viverra purus eleifend eu. In sollicitudin sem massa, porta facilisis arcu pulvinar sit amet. Proin 
+                        ante leo, condimentum quis ligula et, pulvinar ornare sapien.</p>
+                </div>
+                <div class='col col-bg col-1'>
+                    <p>Aenean eget ligula quis sapien tincidunt suscipit. Curabitur nec dolor neque. In hac habitasse platea dictumst. Praesent rhoncus 
+                        neque in nulla lobortis, quis aliquam purus rutrum. Mauris placerat vestibulum volutpat. In ultricies interdum nisl. Aliquam tellus 
+                        massa, maximus sed rhoncus nec, suscipit sed nisl.</p>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            // Examining the document object
+
+            console.dir(document);  // All the properties and methods of the document
+            console.log(document.all);  // It's an html collection with everything that exist in the DOM
+
+            // getElementById
+
+            var title = document.getElementById('header-title');
+            console.log(title);
+
+            title.textContent = 'Hello';
+            title.innerText = 'Goodbye';    // innerText pays attention to the style 
+            title.innerHTML = '<h3>See You</h3>';   // It's going to add to h1 (it's not going to delete h1)
+            title.style.backgroundColor = 'pink'
+
+            // getElementsByClassName
+
+            var items = document.getElementsByClassName('list-group-item');
+            console.log(items);
+            console.log(items[1]);
+            items[1].textContent = 'Urze';
+            items[1].style.fontWeight = 'bold';
+
+            // items.style.backgroundColor = '#f4f4f4'; --> Error !
+
+            for (item of items) {
+                item.style.backgroundColor = '#f4f4f4';
+            }
+
+            // getElementByTagName
+
+            var li = document.getElementsByTagName('li');
+            console.log(li);
+
+            // querySelector
+
+            var header = document.querySelector('#header-title');   
+            header.textContent = 'Hi Again';
+
+            var input = document.querySelector('input');
+            input.value = 'Hello World';
+
+            var submit = document.querySelector('input[type=submit]');
+            submit.value = 'Send';
+
+            var item = document.querySelector('.list-group-item');
+            item.style.color = 'red';
+
+            var lastItem = document.querySelector('.list-group-item:last-child');
+            lastItem.style.color = 'blue';
+
+            var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+            secondItem.style.color = 'purple';
+
+            // querySelectorAll
+
+            var odd = document.querySelectorAll('li:nth-child(odd');
+            for (element of odd) {
+                element.style.backgroundColor = 'pink';
+            }
+
+        </script>
+    </body>
+    
+</html>
